@@ -1,4 +1,4 @@
 class WineStrain < ApplicationRecord
-  belongs_to :wine
-  belongs_to :strain
+  belongs_to :wine, dependent: :destroy
+  belongs_to :strain, dependent: :destroy
 end

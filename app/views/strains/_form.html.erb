@@ -13,17 +13,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :Name %>
+    <%= form.text_field :name, id: :strain_name %>
   </div>
 
    <div class="field">
-    <%= form.label 'Available' %>
-    <%= form.check_box :available %>
+    <%= form.label :Disponible %>
+    <%= form.check_box :available, id: :strain_available %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit value="Create Strain" %>
   </div>
   
 <% end %>

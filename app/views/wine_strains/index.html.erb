@@ -5,6 +5,8 @@
 <table class="table table-sm" >
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Percentage</th>
       <th>Wine</th>
       <th>Strain</th>
       <th colspan="3"></th>
@@ -14,6 +16,8 @@
   <tbody>
     <% @wine_strains.each do |wine_strain| %>
       <tr>
+        <td><%= wine_strain.name %></td>
+        <td><%= wine_strain.percentage %></td>
         <td><%= wine_strain.wine_id %></td>
         <td><%= wine_strain.strain_id %></td>
         <td><%= link_to 'Show', wine_strain %></td>

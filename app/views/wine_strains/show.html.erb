@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @wine_strain.name %>
+</p>
+
+<p>
   <strong>Wine:</strong>
-  <%= @wine_strain.wine_id %>
+  <%= @wine_strain.wine %>
 </p>
 
 <p>
   <strong>Strain:</strong>
-  <%= @wine_strain.strain_id %>
+  <%= @wine_strain.strain %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @wine_strain.percentage %>
 </p>
 
 <%= link_to 'Edit', edit_wine_strain_path(@wine_strain) %> |

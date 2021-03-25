@@ -1,13 +1,21 @@
 class Wine < ApplicationRecord
   has_many :wine_strains
   has_many :strains, through: :wine_strains, dependent: :destroy
-
-  def strain_percentage
-    @strain_percentage = []
-    self.wine_strains.each do |winestrain| 
-        @strain_percentage.push("#{winestrain.strain.name} " + "(#{winestrain.percentage} %)") 
+  
+  def addStrainPercent(percents)
+    percents.each do |strain_id, percentage| 
+      if percentage != "" && percentage != "0"
+      temp_strain = self.wine_strains.where(strain_id: strain_id).first
+      temp_strain.percentage = percentage.to_i
+      temp_strain.save
+      end
     end
-    @strain_percentage.sort.join(', ')
+  end
+
+  def getPercentageByStrainId(strain_id)
+    if self.wine_strains.where(strain_id: strain_id).first
+      self.wine_strains.where(strain_id: strain_id).first.percentage.to_i
+    end
   end
 
 

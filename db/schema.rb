@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_021922) do
+ActiveRecord::Schema.define(version: 2021_03_23_212258) do
 
   create_table "strains", force: :cascade do |t|
     t.string "name"
+    t.boolean "available", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "available"
   end
 
   create_table "wine_strains", force: :cascade do |t|
     t.integer "wine_id"
     t.integer "strain_id"
+    t.integer "percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "percentage"
     t.index ["strain_id"], name: "index_wine_strains_on_strain_id"
     t.index ["wine_id"], name: "index_wine_strains_on_wine_id"
   end

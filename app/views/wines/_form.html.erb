@@ -1,37 +1,46 @@
-<%= form_with(model: wine) do |form| %>
+<%= form_with(model: wine, local: true) do |form| %>
   <% if wine.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(wine.errors.count, "error") %> prohibited this wine from being saved:</h2>
 
       <ul>
-        <% wine.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% wine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
+
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div >
+<h5>Puts wines info:</h5>
+</div>
 
-<table>
-  <div class="field">
-    <%= form.label :strains %>
-    <%= form.collection_check_boxes(:strain_ids, Strain.where(available: true), :id, :name) do |b| %>
-      <%= b.label class: 'label-checkbox' do %>
-      <%= b.check_box + b.text %>
-      <br>
-      <%= form.text_field '', name: 'wine[percentages][]' %>
+<div class="field">
+  <%= form.label :Name %>
+  <%= form.text_field :name, id: :wine_name %>
+</div>
+
+<div class="field">
+  <%= form.label :Strains %>
+  <table>
+    <%= form.collection_check_boxes(:strain_ids, @strains, :id, :name) do |b| %>
+      <tr>
+        <td>
+          <%= b.label class:"label-checkbox pt-2" do %>
+          <%= b.check_box + '&nbsp;'.html_safe + b.text%>
+        </td>
+        <td>
+        <%= text_field("wine[strains_percent]", b.value, value: @wine.getPercentageByStrainId(b.value))%>
+        </td>
+      </tr>
       <% end %>
     <% end %>
+  </table>
+</div>
 
 
-  </div>
-</table>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="actions">
+  <%= form.submit value="Crear vino" %>
+</div>
 <% end %>

@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= form.label :wine_id %>
-    <%= form.text_field :wine_id %>
+    <%= form.text_field :wine_id, id: :wine_strain_wine_id %>
   </div>
 
   <div class="field">
     <%= form.label :strain_id %>
-    <%= form.text_field :strain_id %>
+    <%= form.text_field :strain_id, id: :wine_strain_strain_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :percentage %>
+    <%= form.text_field :percentage, id: :wine_strain_percentage %>
   </div>
 
   <div class="actions">

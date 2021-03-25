@@ -1,5 +1,6 @@
 class WinesController < ApplicationController
   before_action :set_wine, only: %i[ show edit update destroy ]
+  before_action :strains_availables, only: [:new, :edit]
 
   # GET /wines or /wines.json
   def index
@@ -17,18 +18,17 @@ class WinesController < ApplicationController
 
   # GET /wines/1/edit
   def edit
+    @strains = Strain.where(available: true).order("name")
+    @wine.strains.build
   end
 
   # POST /wines or /wines.json
   def create
-    @wine = Wine.new(name: wine_params[:name])
+    @wine = Wine.new(wine_params)
 
     respond_to do |format|
       if @wine.save
-        wine_params[:strain_ids].reject(&:empty?).each_with_index do |id, index|
-            @percentage_list = wine_params[:percentage].reject(&:empty?)
-            @wine_strain = WineStrain.create(wine_id: @wine.id, strain_id: strain_id, percentage: @percentage_list[index])
-        end
+            @wine.addStrainPercent(params[:wine][:strains_percent])
             format.html { redirect_to @wine, notice: "Wine was successfully created." }
             format.json { render :show, status: :created, location: @wine }
         else
@@ -43,13 +43,8 @@ class WinesController < ApplicationController
   # PATCH/PUT /wines/1 or /wines/1.json
   def update
     respond_to do |format|
-      if @wine.update(name: wine_params[:name])
-        wine_params[:strain_ids].reject(&:empty?).each_with_index do |strain_id, index|
-            wine_params[:strain_ids].reject(&:empty?).each_with_index do |id, index|
-              @percentage_list = wine_params[:percentage].reject(&:empty?)
-              @wine_strain = WineStrain.create(wine_id: @wine.id, strain_id: strain_id, percentage: @percentage_list[index])
-        end
-      end
+      if @wine.update(wine_params)
+        @wine.addStrainPercent(params[:wine][:strains_percent])
         format.html { redirect_to @wine, notice: "Wine was successfully updated." }
         format.json { render :show, status: :ok, location: @wine }
       else
@@ -75,9 +70,15 @@ class WinesController < ApplicationController
       @wine = Wine.find(params[:id])
     end
 
+    def strains_availables
+      @strains = Strain.where(available: true).order("name")
+    end
+
     # Only allow a list of trusted parameters through.
     def wine_params
-      params.require(:wine).permit(:name, strain_ids:[], percentages: [])
+      def strains_availables
+        params.require(:wine).permit(:name, strain_ids:[], strains_percentage:[])
+      end
     end
   
 end

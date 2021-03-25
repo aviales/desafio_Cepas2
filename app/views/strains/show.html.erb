@@ -5,5 +5,10 @@
   <%= @strain.name %>
 </p>
 
+<p>
+  <strong>Available:</strong>
+  <%= @strain.available %>
+</p>
+
 <%= link_to 'Edit', edit_strain_path(@strain) %> |
 <%= link_to 'Back', strains_path %>

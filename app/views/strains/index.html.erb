@@ -3,8 +3,8 @@
 <h1>Strains</h1>
 
 <table class="table table-sm" >
-  <thead>
-    <tr>
+  <thead class="thead-dark">
+    <tr class="text-center">
       <th  style="width: 15%">Name</th>
        <th  style="width: 30%">Available</th>
       <th colspan="3"></th>
@@ -12,11 +12,10 @@
   </thead>
 
   <tbody>
-    <% @strains.each do |strain| %>
-      <tr>
+     <% @strains.order(:name).each do |strain| %>
+      <tr class="text-center">
         <td><%= strain.name %></td>
-        
-        <td><%= strain.available.to_s.gsub("true", "Yes").gsub("false", "No") %></td>
+        <td><%= strain.available %></td>
         <td style="width: 5%"><%= link_to 'Show', strain %></td>
         <td style="width: 5%"><%= link_to 'Edit', edit_strain_path(strain) %></td>
         <td style="width: 5%"><%= link_to 'Destroy', strain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +26,5 @@
 
 <br>
 
-<%= link_to 'New Strain', new_strain_path %> |
-<%= link_to 'Wines', wines_path %> |
+<%= link_to '<button type="button" class="btn btn-dark">New Strain</button>'.html_safe, new_strain_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Wine list</button>'.html_safe, wines_path %>
