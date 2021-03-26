@@ -39,6 +39,27 @@
   </table>
 </div>
 
+ <% if @oenologists %>
+  <hr>
+  <div >
+  <h5>Ingrese los datos de la puntuación del vino</h5>
+  </div>
+
+  <div class="field">
+    <%= form.label :Puntaje %>
+    <%= form.number_field :score, id: :wine_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Oenologos %>
+    <%= form.collection_check_boxes(:oenologists, @oenologists, :id, :name) do |o| %>
+      <%= o.label class:"label-checkbox" do %>
+        <%= (@wine.oenologists.pluck(:id).include? (o.value)) ? o.check_box({checked: true}) + '&nbsp;'.html_safe + o.text : o.check_box + '&nbsp;'.html_safe + o.text%>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
 
 <div class="actions">
   <%= form.submit value="Crear vino" %>

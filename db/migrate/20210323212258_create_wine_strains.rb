@@ -4,6 +4,7 @@ class CreateWineStrains < ActiveRecord::Migration[6.1]
       t.references :wine, foreign_key: true
       t.references :strain, foreign_key: true
       t.integer :percentage
+      t.string :name
 
       t.timestamps
     end

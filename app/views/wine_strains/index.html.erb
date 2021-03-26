@@ -5,7 +5,6 @@
 <table class="table table-sm" >
   <thead>
     <tr>
-      <th>Name</th>
       <th>Percentage</th>
       <th>Wine</th>
       <th>Strain</th>
@@ -16,10 +15,9 @@
   <tbody>
     <% @wine_strains.each do |wine_strain| %>
       <tr>
-        <td><%= wine_strain.name %></td>
+        <td><%= wine_strain.wine %></td>
+        <td><%= wine_strain.strain %></td>
         <td><%= wine_strain.percentage %></td>
-        <td><%= wine_strain.wine_id %></td>
-        <td><%= wine_strain.strain_id %></td>
         <td><%= link_to 'Show', wine_strain %></td>
         <td><%= link_to 'Edit', edit_wine_strain_path(wine_strain) %></td>
         <td><%= link_to 'Destroy', wine_strain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +29,4 @@
 <br>
 
 <%= link_to 'New Wine Strain', new_wine_strain_path %>
+

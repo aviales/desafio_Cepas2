@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Magazines</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <th>Nombre</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @magazines.each do |magazine| %>
+      <tr class="text-center">
+        <td><%= magazine.name %></td>
+        <td><%= link_to 'Show', magazine %></td>
+        <td><%= link_to 'Edit', edit_magazine_path(magazine) %></td>
+        <td><%= link_to 'Destroy', magazine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '<button type="button" class="btn btn-dark">Nuevo Trabajo</button>'.html_safe, new_magazine_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Vinos</button>'.html_safe, wines_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Cepas</button>'.html_safe, strains_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Enólogos</button>'.html_safe, oenologists_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Trabajos</button>'.html_safe, job_titles_path %>

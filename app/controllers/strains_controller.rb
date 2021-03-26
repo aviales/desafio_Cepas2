@@ -1,6 +1,6 @@
 class StrainsController < ApplicationController
   before_action :set_strain, only: %i[ show edit update destroy ]
-
+  before_action :authorize_admin!
   # GET /strains or /strains.json
   def index
     @strains = Strain.all

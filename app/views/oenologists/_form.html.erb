@@ -1,0 +1,59 @@
+<%= form_with(model: oenologist, local: true) do |form| %>
+  <% if oenologist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(oenologist.errors.count, "error") %> prohibited this oenologist from being saved:</h2>
+
+      <ul>
+      <% oenologist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div >
+<h5>Ingrese los datos personales del Enólogo</h5>
+</div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :oenologist_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age, id: :oenologist_age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nationality %>
+    <%= form.text_field :nationality, id: :oenologist_nationality %>
+  </div>
+
+<hr>
+<div >
+  <h5>Seleccione los trabajos del enólogo</h5>
+</div>
+
+<div class="field">
+    <%= form.label :Revistas %>
+    <%= form.collection_check_boxes(:magazine, @magazines, :id, :name) do |m| %>
+      <div style="margin-left: 10px">
+        <%= m.text %>
+      </div>
+
+      <div class="field">
+      <div style="margin-left: 20px; margin-top: 5px">
+          <%= form.collection_check_boxes("job_titles[#{m.value}]", @job_titles, :id, :name) do |j| %>
+              <%= (oenologist.magazineoenologistjobtitles.where(magazine_id: m.value).pluck(:job_title_id).include? (j.value)) ? j.check_box({checked: true}) : j.check_box%>
+              <%= j.text%>
+              <br>
+            <% end %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

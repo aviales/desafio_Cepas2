@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Oenologists</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr class="text-center">
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Nacionalidad</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oenologists.order(:age).each do |oenologist| %>
+      <tr>
+        <td><%= oenologist.name %></td>
+        <td><%= oenologist.age %></td>
+        <td><%= oenologist.nationality %></td>
+        <td><%= link_to 'Show', oenologist %></td>
+        <td><%= link_to 'Edit', edit_oenologist_path(oenologist) %></td>
+        <td><%= link_to 'Destroy', oenologist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '<button type="button" class="btn btn-dark">Nuevo Enólogo</button>'.html_safe, new_oenologist_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Vinos</button>'.html_safe, wines_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Cepas</button>'.html_safe, strains_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Enólogos</button>'.html_safe, oenologists_path %>
+<%= link_to '<button type="button" class="btn btn-dark">Listado de Trabajos</button>'.html_safe, job_titles_path %>
