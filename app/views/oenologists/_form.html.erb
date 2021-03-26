@@ -32,11 +32,11 @@
 
 <hr>
 <div >
-  <h5>Seleccione los trabajos del enólogo</h5>
+  <h5>Oenologist works select</h5>
 </div>
 
 <div class="field">
-    <%= form.label :Revistas %>
+    <%= form.label :Magazines %>
     <%= form.collection_check_boxes(:magazine, @magazines, :id, :name) do |m| %>
       <div style="margin-left: 10px">
         <%= m.text %>

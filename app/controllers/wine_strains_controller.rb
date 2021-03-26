@@ -1,6 +1,6 @@
 class WineStrainsController < ApplicationController
   before_action :set_wine_strain, only: %i[ show edit update destroy ]
-
+  before_action :authorize_admin!, except: [:index, :new, :create ]
   # GET /wine_strains or /wine_strains.json
   def index
     @wine_strains = WineStrain.all

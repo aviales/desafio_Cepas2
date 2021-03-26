@@ -2,7 +2,7 @@ class OenologistsController < ApplicationController
   before_action :set_oenologist, only: [:show, :edit, :update, :destroy]
   before_action :magazines_availables, only: [:new, :edit]
   before_action :job_titles_availables, only: [:new, :edit]
-  before_action :authorize_admin!
+  before_action :authorize_admin!, except: [:index, :new, :create ]
   # GET /oenologists
   # GET /oenologists.json
   def index

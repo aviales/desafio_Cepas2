@@ -15,7 +15,7 @@
   <tbody>
     <% @wine_strains.each do |wine_strain| %>
       <tr>
-        <td><%= wine_strain.wine %></td>
+        <td><%= wine_strain.name %></td>
         <td><%= wine_strain.strain %></td>
         <td><%= wine_strain.percentage %></td>
         <td><%= link_to 'Show', wine_strain %></td>
@@ -29,4 +29,5 @@
 <br>
 
 <%= link_to 'New Wine Strain', new_wine_strain_path %>
+<%= link_to 'User Sing Out', sing_in_users_path %>
 
