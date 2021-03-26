@@ -1,6 +1,6 @@
 class MagazinesController < ApplicationController
   before_action :set_magazine, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_admin!, except: [:index, :new, :create ]
+  before_action :authorize_admin!, except: [:index, :new, :create, :update ]
   # GET /magazines
   # GET /magazines.json
   def index
