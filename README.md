@@ -14,7 +14,7 @@ _Este aparece luego de hacer click en el boton ***CODE*** parte superior derecha
 _Abrir un terminal he ir a la carpeta recien creada_
 
 ```
-cd productora_de_eventos
+cd desafio_Cepas2
 ```
 
 _ejecutar el siguiente comando_
