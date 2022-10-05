@@ -1,24 +1,49 @@
-# README
+# desafio_cepas2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_Aplicación para la administración de grupos y eventos_
+_Se pueden crear, borrar y actualizar tanto los Grupos como los Eventos_
 
-Things you may want to cover:
+## Para bajar el Proyecto en formato ZIP🚀
 
-* Ruby version
+_Bajar el proyecto, haciendo Click en el boton_
+_***Download ZIP*** para bajar el archivo_
+_Este aparece luego de hacer click en el boton ***CODE*** parte superior derecha_
 
-* System dependencies
+### Instalación 🔧
 
-* Configuration
+_Abrir un terminal he ir a la carpeta recien creada_
 
-* Database creation
+```
+cd productora_de_eventos
+```
 
-* Database initialization
+_ejecutar el siguiente comando_
 
-* How to run the test suite
+```
+bundle install
+```
+_Crear la base de datos_
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:create
+```
 
-* Deployment instructions
+_Realizar las migraciones_
 
-* ...
+```
+rails db:migrate
+```
+
+_Subir el servidor PUMA_
+
+```
+rails s
+```
+_Colocar la dirección, en el navegador_
+
+```
+https://localhost:3000
+```
+
+
+
